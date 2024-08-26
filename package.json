@@ -1,0 +1,28 @@
+{
+  "name": "monaco-playground",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint"
+  },
+  "dependencies": {
+    "next": "12.3.4",
+    "react": "17.0.2",
+    "react-dom": "17.0.2",
+    "@monaco-editor/react": "4.4.6",
+    "monaco-editor": "0.50.0",
+    "acorn": "8.12.1",
+    "acorn-loose": "8.4.0"
+  },
+  "devDependencies": {
+    "@types/node": "22.5.0",
+    "@types/react": "17.0.69",
+    "@types/react-dom": "17.0.22",
+    "eslint": "8.57.0",
+    "eslint-config-next": "14.2.6",
+    "typescript": "5.5.4"
+  }
+}

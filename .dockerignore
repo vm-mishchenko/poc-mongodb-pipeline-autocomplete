@@ -1,0 +1,9 @@
+.next
+.idea
+.vscode
+.env.*
+node_modules
+npm-debug.log
+Dockerfile
+README.md
+.drone.yml
