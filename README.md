@@ -2,8 +2,8 @@
 
 ## Development
 Install dependencies:
-```typescript
-npm instal;
+```shell
+npm install
 ```
 
 Run application locally:
