@@ -69,7 +69,7 @@ export const monacoEditorOptions: editor.IEditorOptions={
 };
 
 const Home: NextPage=() => {
-    const [value, setValue]=useState('');
+    const [value, setValue]=useState('[]');
     
     const handleEditorDidMount=async (editor: IStandaloneCodeEditor, monaco: Monaco) => {
         new PipelineCompletion(editor, monaco, {
@@ -81,17 +81,80 @@ const Home: NextPage=() => {
     };
     
     return (
-        <div className={styles.editor}>
-            <Editor
-                value={value}
-                language="javascript"
-                options={monacoEditorOptions}
-                onMount={handleEditorDidMount}
-                defaultLanguage={'javascript'}
-                onChange={(value) => {
-                    setValue(value || '');
-                }}
-            />
+        <div className={styles.app}>
+            <h1>MongoDB pipeline autocomplete</h1>
+            <div>
+                <p>Autocomplete $search and $limit stages</p>
+                <div className={styles.editor}>
+                    <Editor
+                        value={value}
+                        language="javascript"
+                        options={monacoEditorOptions}
+                        onMount={handleEditorDidMount}
+                        defaultLanguage={'javascript'}
+                        onChange={(value) => {
+                            setValue(value || '');
+                        }}
+                    />
+                </div>
+            </div>
+            
+            <div className={styles.description}>
+                <div>
+                    <h2>Features</h2>
+                    <ul>
+                        <li>
+                            <span>Build suggestions dynamically based on:</span>
+                            <ul>
+                                <li>indexed fields</li>
+                                <li>documents schema</li>
+                                <li>stages added to the pipeline already</li>
+                                <li>most popular operators statistically</li>
+                                <li>previously used operators per user, session, etc.</li>
+                                <li>examples in this POC:</li>
+                                <ul>
+                                    <li>app doesn't suggest a stage if it was already added to the
+                                        pipeline
+                                    </li>
+                                </ul>
+                            </ul>
+                        </li>
+                        <li>
+                            <span>Few autocomplete UX flow:</span>
+                            <ul>
+                            <li>user selects proposed suggestions without typing, e.g. for
+                                    stages
+                                </li>
+                                <li>user starts typing to get suggestions, e.g. for search operators
+                                </li>
+                            </ul>
+                        </li>
+                        <li>
+                            Autocomplete for each stage can be added one by one gradually
+                        </li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h2>How it works</h2>
+                    <ul>
+                        <li>
+                            <span>App registers few types of autocomplete suggestion services:</span>
+                            <ul>
+                                <li>general service to suggest the next stage</li>
+                                <li>stage specific service, e.g. for $search specifically</li>
+                            </ul>
+                        </li>
+                        <li>app parses string to AST tree</li>
+                        <li>app finds the focused AST node based on cursor position</li>
+                        <li>based on the node position, app delegates suggestions generation to appropriate service</li>
+                        <li>each service decide how to generate suggestions, e.g. statically, rule
+                            based, ml
+                        </li>
+                        <li>Autocomplete suggestions service can be built in an abstract way without binding to a specific editor, as soon as the editor returns stage as a string and cursor position (line and column)</li>
+                    </ul>
+                </div>
+            </div>
         </div>
     )
 }

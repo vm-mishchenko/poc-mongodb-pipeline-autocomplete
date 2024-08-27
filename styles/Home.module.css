@@ -1,4 +1,16 @@
-.editor {
-  height: 500px;
-  border: 1px solid silver;
+.app {
+  margin: 0;
+  padding: 25px;
 }
+
+.editor {
+  height: 400px;
+  padding-bottom: 25px;
+  border: 1px solid silver;
+  flex-grow: 1;
+}
+
+.description {
+  display: flex;
+}
+

@@ -1,5 +1,7 @@
 # MongoDB aggregation pipeline autocomplete
 
+https://mongodb-pipeline-autocomplete.cloud-atlas-search.staging.corp.mongodb.com
+
 ## Development
 Install dependencies:
 ```shell
@@ -13,6 +15,10 @@ npm run dev
 mongodb-pipeline-autocomplete
 
 ## Deployment
+
+Links: 
+- [Drone project](https://drone.corp.mongodb.com/vm-mishchenko/poc-mongodb-pipeline-autocomplete)
+
 Build production app build:
 ```shell
 docker build -t mongodb-pipeline-autocomplete .
@@ -45,3 +51,4 @@ Configure Drone CI/CD:
     - `staging_kubernetes_token`
       - kubectl get secret tiller-token -o jsonpath="{.data.token}" | base64 --decode && echo
 - each commit will be deployed
+
