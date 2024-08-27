@@ -84,7 +84,7 @@ const Home: NextPage=() => {
         <div className={styles.app}>
             <h1>MongoDB pipeline autocomplete</h1>
             <div>
-                <p>Autocomplete $search and $limit stages</p>
+                <p>Autocomplete $limit, $search stages + text and compound search operators.</p>
                 <div className={styles.editor}>
                     <Editor
                         value={value}
@@ -104,12 +104,12 @@ const Home: NextPage=() => {
                     <h2>Features</h2>
                     <ul>
                         <li>
-                            <span>Build suggestions dynamically based on:</span>
+                            <span>We can build suggestions dynamically based on:</span>
                             <ul>
                                 <li>indexed fields</li>
                                 <li>documents schema</li>
                                 <li>stages added to the pipeline already</li>
-                                <li>most popular operators statistically</li>
+                                <li>most popular operators</li>
                                 <li>previously used operators per user, session, etc.</li>
                                 <li>examples in this POC:</li>
                                 <ul>
@@ -139,19 +139,19 @@ const Home: NextPage=() => {
                     <h2>How it works</h2>
                     <ul>
                         <li>
-                            <span>App registers few types of autocomplete suggestion services:</span>
+                            <span>App registers few types of autocomplete services:</span>
                             <ul>
-                                <li>general service to suggest the next stage</li>
-                                <li>stage specific service, e.g. for $search specifically</li>
+                                <li><i>general</i> service to suggest the next stage</li>
+                                <li><i>stage</i> specific service, e.g. for $search specifically</li>
                             </ul>
                         </li>
                         <li>app parses string to AST tree</li>
-                        <li>app finds the focused AST node based on cursor position</li>
-                        <li>based on the node position, app delegates suggestions generation to appropriate service</li>
+                        <li>app finds the focused AST node based on the cursor position</li>
+                        <li>app delegates suggestions generation to appropriate service based on the focused node position</li>
                         <li>each service decide how to generate suggestions, e.g. statically, rule
                             based, ml
                         </li>
-                        <li>Autocomplete suggestions service can be built in an abstract way without binding to a specific editor, as soon as the editor returns stage as a string and cursor position (line and column)</li>
+                        <li>system can be built in an editor abstract way, as soon as the editor returns stage as a string and cursor position (line and column)</li>
                     </ul>
                 </div>
             </div>
