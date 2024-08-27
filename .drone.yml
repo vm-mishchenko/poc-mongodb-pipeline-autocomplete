@@ -34,6 +34,7 @@ steps:
       namespace: cloud-atlas-search
       release: mongodb-pipeline-autocomplete
       values: image.tag=git-${DRONE_COMMIT_SHA:0:7},image.repository=795250896452.dkr.ecr.us-east-1.amazonaws.com/cloud-atlas-search/${DRONE_REPO_NAME},ingress.enabled=true,ingress.hosts[0]=mongodb-pipeline-autocomplete.cloud-atlas-search.staging.corp.mongodb.com,mesh.enabled=true
+      values_files: [ "kanopy/staging.yml" ]
       api_server: https://api.staging.corp.mongodb.com
       kubernetes_token:
         from_secret: staging_kubernetes_token
