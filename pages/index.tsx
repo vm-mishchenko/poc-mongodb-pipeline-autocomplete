@@ -145,13 +145,11 @@ const Home: NextPage=() => {
                                 <li><i>stage</i> specific service, e.g. for $search specifically</li>
                             </ul>
                         </li>
-                        <li>app parses string to AST tree</li>
-                        <li>app finds the focused AST node based on the cursor position</li>
+                        <li>app parses string to a tree</li>
+                        <li>app finds the focused tree node based on the cursor position</li>
                         <li>app delegates suggestions generation to appropriate service based on the focused node position</li>
-                        <li>each service decide how to generate suggestions, e.g. statically, rule
-                            based, ml
+                        <li>each service decide how to generate suggestions, e.g. statically, rule based, ml
                         </li>
-                        <li>system can be built in an editor abstract way, as soon as the editor returns stage as a string and cursor position (line and column)</li>
                     </ul>
                 </div>
             </div>
