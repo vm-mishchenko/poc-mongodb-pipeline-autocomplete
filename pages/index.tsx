@@ -104,33 +104,28 @@ const Home: NextPage=() => {
                     <h2>Features</h2>
                     <ul>
                         <li>
-                            <span>We can build suggestions dynamically based on:</span>
+                            Autocomplete for each stage can be added one by one gradually
+                        </li>
+                        <li>
+                            <span>Suggestions can be built dynamically, e.g. based on:</span>
                             <ul>
                                 <li>indexed fields</li>
                                 <li>documents schema</li>
-                                <li>stages added to the pipeline already</li>
-                                <li>most popular operators</li>
-                                <li>previously used operators per user, session, etc.</li>
+                                <li>most popular stages</li>
+                                <li>stages in the pipeline</li>
                                 <li>examples in this POC:</li>
                                 <ul>
-                                    <li>app doesn't suggest a stage if it was already added to the
-                                        pipeline
-                                    </li>
+                                    <li>app doesn't suggest a stage if it is already in the pipeline</li>
                                 </ul>
                             </ul>
                         </li>
+                        
                         <li>
-                            <span>Few autocomplete UX flow:</span>
+                            <span>Few autocomplete UX flows:</span>
                             <ul>
-                            <li>user selects proposed suggestions without typing, e.g. for
-                                    stages
-                                </li>
-                                <li>user starts typing to get suggestions, e.g. for search operators
-                                </li>
+                                <li>show suggestions without any input from user </li>
+                                <li>show suggestions as user types the first characters</li>
                             </ul>
-                        </li>
-                        <li>
-                            Autocomplete for each stage can be added one by one gradually
                         </li>
                     </ul>
                 </div>
@@ -138,18 +133,10 @@ const Home: NextPage=() => {
                 <div>
                     <h2>How it works</h2>
                     <ul>
-                        <li>
-                            <span>App registers few types of autocomplete services:</span>
-                            <ul>
-                                <li><i>general</i> service to suggest the next stage</li>
-                                <li><i>stage</i> specific service, e.g. for $search specifically</li>
-                            </ul>
-                        </li>
-                        <li>app parses string to a tree</li>
-                        <li>app finds the focused tree node based on the cursor position</li>
-                        <li>app delegates suggestions generation to appropriate service based on the focused node position</li>
-                        <li>each service decide how to generate suggestions, e.g. statically, rule based, ml
-                        </li>
+                        <li>app parses the pipeline string to an AST tree</li>
+                        <li>based on the current cursor position and tree, apps builds a context (e.g. currently focused stage, stages in the pipeline, etc.)</li>
+                        <li>app calls a service that should return suggestions based on the context</li>
+                        <li>service decides how to generate suggestions, e.g. statically, rule based, ml, etc.</li>
                     </ul>
                 </div>
             </div>
