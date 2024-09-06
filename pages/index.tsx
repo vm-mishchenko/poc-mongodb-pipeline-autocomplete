@@ -84,6 +84,11 @@ const Home: NextPage=() => {
         <div className={styles.app}>
             <h1>MongoDB pipeline autocomplete</h1>
             <div>
+                <p><a
+                    href="https://drive.google.com/file/d/1OVZYVCZW72gdoKFGTVoPg6r3dTpF3oF-/view?usp=drive_link">Video
+                    description</a></p>
+                <p><a
+                    href="https://github.com/vm-mishchenko/poc-mongodb-pipeline-autocomplete">GitHub</a></p>
                 <p>Autocomplete $limit, $search stages + text and compound search operators.</p>
                 <div className={styles.editor}>
                     <Editor
